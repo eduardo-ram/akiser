@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="mb-0">Serviços Próximos a Você</h1>
+  <small class="text-muted">João Pessoa</small>
+</div>
+
+<div class="row">
+  {% for s in services %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img src="{{ url_for('static', filename='images/' ~ s.imagem) }}" class="card-img-top" alt="Imagem do serviço">
+        <div class="card-body">
+          <h5 class="card-title">{{ s.servico }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ s.nome }}</h6>
+          <p class="card-text">{{ s.descricao }}</p>
+          <p class="fw-bold text-success">R$ {{ s.valor }}</p>
+          <a href="https://wa.me/55{{ s.contato|replace('(', '')|replace(')', '')|replace(' ', '')|replace('-', '') }}" target="_blank" class="btn btn-primary">Entrar em contato</a>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <p class="text-center">Nenhum serviço cadastrado ainda.</p>
+  {% endfor %}
+</div>
+{% endblock %}
