@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1 class="mb-4">Todos os Serviços</h1>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Serviço</th>
+          <th>Descrição</th>
+          <th>Valor (R$)</th>
+          <th>Contato</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in services %}
+          <tr>
+            <td>{{ s.nome }}</td>
+            <td>{{ s.servico }}</td>
+            <td>{{ s.descricao }}</td>
+            <td>{{ s.valor }}</td>
+            <td>{{ s.contato }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

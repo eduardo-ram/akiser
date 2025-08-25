@@ -4,16 +4,40 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Akiser</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar navbar-dark bg-dark mb-4">
-    <div class="container">
-      <a class="navbar-brand" href="/">Akiser</a>
-    </div>
-  </nav>
-  <div class="container">
-    {% block content %}{% endblock %}
+<nav class="navbar navbar-dark bg-primary mb-4">
+  <div class="container d-flex align-items-center justify-content-between">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Akiser Logo" height="60" class="me-2">
+    </a>
+    <span class="text-light fst-italic">Conectando quem precisa a quem sabe fazer!</span>
   </div>
+</nav>
+<main class="container">
+  {% block content %}{% endblock %}
+</main>
+<footer class="bg-primary text-light text-center py-4 mt-5">
+  <div class="container">
+    <p class="mb-1 fs-5">&copy; 2025 Akiser - Os Melhores Serviços Próximos a Você</p>
+
+    <div class="mt-3">
+      <a href="{{ url_for('main.index') }}" class="d-block text-light text-decoration-none mb-4">
+        Página Inicial
+      </a>
+      <a href="{{ url_for('main.services') }}" class="d-block text-light text-decoration-none mb-2">
+        Todos os Serviços:
+      </a>
+    </div>
+
+    <ul class="list-unstyled">
+      {% for s in services %}
+        <li>{{ s.servico }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</footer>
 </body>
 </html>
